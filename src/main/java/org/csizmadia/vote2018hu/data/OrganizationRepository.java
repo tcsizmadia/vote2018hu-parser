@@ -8,6 +8,6 @@ import org.springframework.data.repository.CrudRepository;
  * 
  * @author Tamas Csizmadia
  */
-public interface OrganizationRepository extends CrudRepository<Organization, String> {
+public interface OrganizationRepository extends CrudRepository<Organization, Long> {
 
 }

@@ -1,9 +1,11 @@
 package org.csizmadia.vote2018hu.data;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * This class represents an organization entity. An organization is something like a party,
@@ -13,11 +15,13 @@ import lombok.Data;
  * @author Tamas Csizmadia
  */
 @Data
+@NoArgsConstructor
 @Entity
 public class Organization
 {
     @Id
-    private String id;    
+    @GeneratedValue
+    private Long id;    
     private String name;
 
     /**
