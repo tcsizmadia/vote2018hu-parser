@@ -8,6 +8,9 @@ This is a [Spring Boot Shell](https://projects.spring.io/spring-shell/) *CLI* ap
 Supported commands are:
 
 - `list-orgs` lists the runner-up organizations for this election
+- `list-parties` lists the runner-up parties for this election
+- `help` displays a list of available commands with description
+- `exit` exits from the CLI application
 
 ## WHAT IS DONE
 
@@ -27,5 +30,4 @@ Supported commands are:
 - MCP
 - MISZEP
 - MODERN MAGYARORSZÁG MOZGALOM (MOMA)
-- MOMENTUM"
-
+- MOMENTUM

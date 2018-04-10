@@ -19,7 +19,7 @@ import lombok.extern.slf4j.Slf4j;
  * @author Tamas Csizmadia
  * 
  * @see Party
- * @see Formation
+ * @see Organization
  */
 @Slf4j
 @Component
@@ -27,7 +27,10 @@ import lombok.extern.slf4j.Slf4j;
 public class DataLoader implements ApplicationRunner {
 
     @Autowired
-    private OrganizationRepository repository;
+    private OrganizationRepository orgRepository;
+
+    @Autowired
+    private PartyRepository partyRepository;
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
@@ -49,6 +52,34 @@ public class DataLoader implements ApplicationRunner {
             "MISZEP",
             "MODERN MAGYARORSZÁG MOZGALOM (MOMA)",
             "MOMENTUM"
-        ).stream().map(Organization::new).forEach(repository::save);    
+        ).stream().map(Organization::new).forEach(orgRepository::save);
+
+        log.info("Adding parties to the database");
+
+        Arrays.asList(
+            "CSALÁDOK PÁRTJA",
+            "DEMOKRATIKUS KOALÍCIÓ",
+            "EGYÜTT - A KORSZAKVÁLTÓK PÁRTJA",
+            "EURÓPAI ROMA KERESZTÉNYEK JOBBLÉTÉÉRT DEMOKRATIKUS PÁRT",
+            "FIDESZ - MAGYAR POLGÁRI SZÖVETSÉG-KERESZTÉNYDEMOKRATA NÉPPÁRT",
+            "IRÁNYTŰ PÁRT",
+            "JOBBIK MAGYARORSZÁGÉRT MOZGALOM",
+            "KELL AZ ÖSSZEFOGÁS PÁRT",
+            "KÖZÖS NEVEZŐ 2018",
+            "LEHET MÁS A POLITIKA",
+            "MAGYAR IGAZSÁG ÉS ÉLET PÁRTJA",
+            "MAGYAR KÉTFARKÚ KUTYA PÁRT",
+            "MAGYARORSZÁGI CIGÁNYPÁRT",
+            "MAGYARORSZÁGON ÉLŐ DOLGOZÓ ÉS TANULÓ EMBEREK PÁRTJA",
+            "MAGYAR MUNKÁSPÁRT",
+            "MAGYAR SZOCIALISTA PÁRT-PÁRBESZÉD MAGYARORSZÁGÉRT PÁRT",
+            "MOMENTUM MOZGALOM",
+            "NET PÁRT",
+            "ÖSSZEFOGÁS PÁRT",
+            "REND ÉS ELSZÁMOLTATÁS PÁRT",
+            "SPORTOS ÉS EGÉSZSÉGES MAGYARORSZÁGÉRT PÁRT",
+            "SZEGÉNY EMBEREK MAGYARORSZÁGÉRT PÁRT",
+            "TENNI AKARÁS MOZGALOM"
+        ).stream().map(Party::new).forEach(partyRepository::save);
 	}
 }
